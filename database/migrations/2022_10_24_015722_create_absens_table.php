@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger("siswa_id");
             $table->date("hari");
-            $table->string("keterangan");
+            $table->enum("keterangan", ['izin', 'sakit', 'alpha']);
         });
     }
 

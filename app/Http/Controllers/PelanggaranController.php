@@ -82,4 +82,19 @@ class PelanggaranController extends Controller
     {
         //
     }
+    // x (sepuluh)
+    public function sepuluh()
+    {
+        return view('components.content.pelanggaran.x');
+    }
+    // xi (sebelas)
+    public function sebelas()
+    {
+        return view('components.content.pelanggaran.xi');
+    }
+    // xii (duabelas)
+    public function duabelas()
+    {
+        return view('components.content.pelanggaran.xii');
+    }
 }

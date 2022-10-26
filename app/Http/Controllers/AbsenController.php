@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absen;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -24,7 +25,6 @@ class AbsenController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -81,5 +81,28 @@ class AbsenController extends Controller
     public function destroy(Absen $absen)
     {
         //
+    }
+
+    // x (sepuluh)
+    public function sepuluh()
+    {
+        $absen = Absen::all();
+        $siswa = Siswa::all();
+        return view('components.content.absen.x', [
+            "absen" => $absen,
+            "siswa" => $siswa
+        ]);
+    }
+    // xi (sebelas)
+    public function sebelas()
+    {
+        $absen = Absen::all();
+        return view('components.content.absen.xi', [compact('absen')]);
+    }
+    // xii (duabelas)
+    public function duabelas()
+    {
+        $absen = Absen::all();
+        return view('components.content.absen.xii', [compact('absen')]);
     }
 }

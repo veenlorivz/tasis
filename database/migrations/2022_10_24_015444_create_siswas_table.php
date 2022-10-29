@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string("nis");
             $table->unsignedBigInteger("kelas_id");
             $table->integer("poin");
+            $table->integer("izin")->default(0);
+            $table->integer("alpha")->default(0);
+            $table->integer("sakit")->default(0);
         });
     }
 

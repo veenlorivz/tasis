@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Absen extends Model
 {
     use HasFactory;
+    public function absen()
+    {
+        return $this->belongsTo(Siswa::class);
+    }
 }

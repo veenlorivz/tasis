@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
-    public function siswa()
+    protected $guarded = [''];
+    public function absen()
     {
         return $this->belongsTo(Absen::class);
     }

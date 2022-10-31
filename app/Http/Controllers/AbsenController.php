@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absen;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -86,21 +87,28 @@ class AbsenController extends Controller
     // x (sepuluh)
     public function sepuluh()
     {
-        $siswa = Siswa::with(['absen'])->get();
+        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
         return view('components.content.absen.x', [
-            'siswa' => $siswa,
+            'kelas' => Kelas::where('nomor_kelas', 'X')->with('siswa')->get(),
+            'bulan' => $bulan
         ]);
     }
     // xi (sebelas)
     public function sebelas()
     {
-        $absen = Absen::all();
-        return view('components.content.absen.xi', [compact('absen')]);
+        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
+        return view('components.content.absen.xi', [
+            'kelas' => Kelas::where('nomor_kelas', 'XI')->with('siswa')->get(),
+            'bulan' => $bulan
+        ]);
     }
     // xii (duabelas)
     public function duabelas()
     {
-        $absen = Absen::all();
-        return view('components.content.absen.xii', [compact('absen')]);
+        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
+        return view('components.content.absen.xii', [
+            'kelas' => Kelas::where('nomor_kelas', 'XII')->with('siswa')->get(),
+            'bulan' => $bulan
+        ]);
     }
 }

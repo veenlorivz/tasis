@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pelanggaran extends Model
 {
     use HasFactory;
+    protected $guarded = [''];
 
     public function siswa(){
         return $this->belongsTo(Siswa::class);

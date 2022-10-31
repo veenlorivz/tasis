@@ -48,35 +48,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="card-body">
-            <table class="table" style="margin-top: -20px;" border="1">
-                <thead class="text-center">
-                    <tr>
-                        <th rowspan="2" scope="col">No</th>
-                        <th rowspan="2" scope="col">Nama Siswa</th>
-                        <th rowspan="2" scope="col">Jurusan</th>
-                        <th>Izin</th>
-                        <th>Sakit</th>
-                        <th>Alpha</th>
-                        <th rowspan="2" scope="col">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($absen as $abs)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $abs->siswa_id }}</td>
-                            <td></td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-=======
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -116,7 +87,6 @@
                     does limit overflow.
                 </div>
             </div>
->>>>>>> 1bdea26 (temporary)
         </div>
     </div>
 @endsection

@@ -19,17 +19,17 @@ class PelanggaranController extends Controller
     {
         switch ($kelas) {
             case 'X':
-                return view('components.content.pelanggaran.x', [
+                return view('components.content.pelanggaran.x.index', [
                     "data" => Kelas::with(['siswa'])->get()
                 ]);
                 break;
             case 'XI':
-                return view('components.content.pelanggaran.xi', [
+                return view('components.content.pelanggaran.xi.index', [
                     "data" => Kelas::with(['siswa'])->get()
                 ]);
                 break;
             case 'XII':
-                return view('components.content.pelanggaran.xii', [
+                return view('components.content.pelanggaran.xii.index', [
                     "data" => Kelas::with(['siswa'])->get()
                 ]);
                 break;
@@ -44,9 +44,11 @@ class PelanggaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($siswa_id)
     {
-
+        return view('components.content.pelanggaran.x.create', [
+            "siswa" => Siswa::where("id", $siswa_id)->first()
+        ]);
     }
 
     /**
@@ -57,7 +59,15 @@ class PelanggaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = Siswa::where("id", $request->siswa_id)->first();
+        $siswa->poin = $siswa->poin - $request->poin;
+        $siswa->update();
+        Pelanggaran::create([
+            "siswa_id" => $request->siswa_id,
+            "poin" => $request->poin,
+            "keterangan" => $request->keterangan
+        ]);
+        return redirect("/pelanggaran/X");
     }
 
     /**

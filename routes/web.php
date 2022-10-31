@@ -25,6 +25,8 @@ Route::middleware('guest')->group(function () {
     });
     Route::prefix('pelanggaran')->group(function () {
         Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.x');
+        Route::get('/add/{siswa_id}', PelanggaranController::class . '@create')->name('create.x');
+        Route::post('/store', PelanggaranController::class . '@store')->name('store.x');
         Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.xi');
         Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.xii');
     });

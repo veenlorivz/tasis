@@ -86,9 +86,9 @@ class AbsenController extends Controller
     // x (sepuluh)
     public function sepuluh()
     {
-        $absen = Absen::with(['siswa'])->get();
+        $siswa = Siswa::with(['absen'])->get();
         return view('components.content.absen.x', [
-            'absen' => $absen   
+            'siswa' => $siswa,
         ]);
     }
     // xi (sebelas)

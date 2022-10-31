@@ -6,57 +6,43 @@
     Data Pelanggaran
 @endsection
 @section('content')
+    @foreach ($data as $d)
     <div class="card shadow-sm rounded-lg">
         <div class="card-title">
-            <h5 class="pt-4 ml-4 mb-4">Pelanggaran | X</h5>
+            <h5 class="pt-4 ml-4 mb-4">{{ $d->nomor_kelas }} {{ $d->nama_jurusan }}</h5>
             <hr>
         </div>
         <div class="card-body">
-            <table class="table" style="margin-top: -20px;" border="1">
+            <table class="table" style="margin-top: -20px;">
                 <thead class="text-center">
                     <tr>
-                        <th rowspan="2" scope="col">No</th>
-                        <th rowspan="2" scope="col">Nama Siswa</th>
-                        <th rowspan="2" scope="col">Jurusan</th>
-                        <th colspan="3" scope="col" class="text-center">Keterangan</th>
-                        <th rowspan="2" scope="col">Total</th>
-                    </tr>
-                    <tr>
-                        <th>Izin</th>
-                        <th>Sakit</th>
-                        <th>Alpha</th>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Siswa</th>
+                        <th scope="col">Nis</th>
+                        <th scope="col">Sisa Poin</th>
+                        <th  scope="col">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                <tbody class="text-center">
+                    @foreach ($d->siswa as $siswa)                        
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $siswa->nama }}</td>
+                            <td>{{ $siswa->nis }}</td>
+                            <td>{{$siswa->poin }}</td>
+                            <td>
+                                <a href="" class="text-decoration-none">
+                                    <i class="bi bi-plus-circle-fill text-info fa-2x mr-2 cursor-pointer text-decoration-none"></i>
+                                </a>
+                                <a href="" class="text-decoration-none">
+                                    <i class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    @endforeach
 @endsection

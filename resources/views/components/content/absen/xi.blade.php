@@ -18,13 +18,10 @@
                         <th rowspan="2" scope="col">No</th>
                         <th rowspan="2" scope="col">Nama Siswa</th>
                         <th rowspan="2" scope="col">Jurusan</th>
-                        <th colspan="3" scope="col" class="text-center">Keterangan</th>
-                        <th rowspan="2" scope="col">Total</th>
-                    </tr>
-                    <tr>
                         <th>Izin</th>
                         <th>Sakit</th>
                         <th>Alpha</th>
+                        <th rowspan="2" scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -26,9 +26,9 @@
                 <a href="#" class="nav-link has-dropdown"><i class="bi bi-info-circle"></i>
                     <span>Data Pelanggaran</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ Route('pelanggar.x') }}">X</a></li>
-                    <li><a class="nav-link" href="{{ Route('pelanggar.xi') }}">XI</a></li>
-                    <li><a class="nav-link" href="{{ Route('pelanggar.xii') }}">XII</a></li>
+                    <li><a class="nav-link" href="pelanggaran/X">X</a></li>
+                    <li><a class="nav-link" href="pelanggaran/XI">XI</a></li>
+                    <li><a class="nav-link" href="pelanggaran/XII">XII</a></li>
                 </ul>
             </li>
     </aside>

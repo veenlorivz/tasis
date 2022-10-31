@@ -24,8 +24,8 @@ Route::middleware('guest')->group(function () {
         Route::get('/XII', AbsenController::class . '@duabelas')->name('absen.xii');
     });
     Route::prefix('pelanggaran')->group(function () {
-        Route::get('/X', PelanggaranController::class . '@sepuluh')->name('pelanggar.x');
-        Route::get('/XI', PelanggaranController::class . '@sebelas')->name('pelanggar.xi');
-        Route::get('/XII', PelanggaranController::class . '@duabelas')->name('pelanggar.xii');
+        Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.x');
+        Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.xi');
+        Route::get('/{kelas}', PelanggaranController::class . '@index')->name('pelanggar.xii');
     });
 });

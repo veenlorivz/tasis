@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggaran;
+use App\Models\Siswa;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
+
 
 class PelanggaranController extends Controller
 {
@@ -12,9 +15,28 @@ class PelanggaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($kelas)
     {
-        //
+        switch ($kelas) {
+            case 'X':
+                return view('components.content.pelanggaran.x', [
+                    "data" => Kelas::with(['siswa'])->get()
+                ]);
+                break;
+            case 'XI':
+                return view('components.content.pelanggaran.xi', [
+                    "data" => Kelas::with(['siswa'])->get()
+                ]);
+                break;
+            case 'XII':
+                return view('components.content.pelanggaran.xii', [
+                    "data" => Kelas::with(['siswa'])->get()
+                ]);
+                break;
+            default:
+                return $kelas;
+                break;
+        }
     }
 
     /**
@@ -24,7 +46,7 @@ class PelanggaranController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -85,7 +107,7 @@ class PelanggaranController extends Controller
     // x (sepuluh)
     public function sepuluh()
     {
-        return view('components.content.pelanggaran.x');
+        
     }
     // xi (sebelas)
     public function sebelas()

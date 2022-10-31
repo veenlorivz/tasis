@@ -20,17 +20,17 @@ class PelanggaranController extends Controller
         switch ($kelas) {
             case 'X':
                 return view('components.content.pelanggaran.x.index', [
-                    "data" => Kelas::with(['siswa'])->get()
+                    "data" => Kelas::where("nomor_kelas", "X")->with(['siswa'])->get()
                 ]);
                 break;
             case 'XI':
                 return view('components.content.pelanggaran.xi.index', [
-                    "data" => Kelas::with(['siswa'])->get()
+                    "data" => Kelas::where("nomor_kelas", "XI")->with(['siswa'])->get()
                 ]);
                 break;
             case 'XII':
                 return view('components.content.pelanggaran.xii.index', [
-                    "data" => Kelas::with(['siswa'])->get()
+                    "data" => Kelas::where("nomor_kelas", "XII")->with(['siswa'])->get()
                 ]);
                 break;
             default:

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('titlepage')
-    Absensi | XI
+    Absensi
 @endsection
 @section('title')
     Data Absensi
@@ -11,7 +11,7 @@
             <h3 class="ms-2 mb-3 mt-5">{{ $b }}</h3>
             <hr>
         </div>
-        @foreach ($kelas as $k)
+        @foreach ($data as $k)
             <div class="accordion shadow-sm rounded-lg" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="{{ "s$k->id$b" }}-headingTwo">
@@ -48,11 +48,11 @@
                                             <td>{{ $siswa->alpha }}</td>
                                             <td>{{ $siswa->izin + $siswa->sakit + $siswa->alpha }}</td>
                                             <td>
-                                                <a href="" class="text-decoration-none">
+                                                <a href="/absen/add/{{ $siswa->id }}" class="text-decoration-none">
                                                     <i
                                                         class="bi bi-plus-circle-fill text-info fa-2x mr-2 cursor-pointer text-decoration-none"></i>
                                                 </a>
-                                                <a href="" class="text-decoration-none">
+                                                <a href="/absen/detail/{{ $siswa->id }}" class="text-decoration-none">
                                                     <i
                                                         class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>
                                                 </a>

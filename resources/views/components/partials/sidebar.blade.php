@@ -17,9 +17,9 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="bi bi-archive"></i>
                     <span>Data Absensi</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ Route('absen.x') }}">X</a></li>
-                    <li><a class="nav-link" href="{{ Route('absen.xi') }}">XI</a></li>
-                    <li><a class="nav-link" href="{{ Route('absen.xii') }}">XII</a></li>
+                    <li><a class="nav-link" href="/absen/X">X</a></li>
+                    <li><a class="nav-link" href="/absen/XI">XI</a></li>
+                    <li><a class="nav-link" href="/absen/XII">XII</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -33,4 +33,3 @@
             </li>
     </aside>
 </div>
-

@@ -7,6 +7,8 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class AbsenController extends Controller
 {
     /**
@@ -14,9 +16,32 @@ class AbsenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($kelas)
     {
-        //
+        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
+        switch ($kelas) {
+            case 'X':
+                return view('components.content.absen.index', [
+                    'data' => Kelas::where('nomor_kelas', 'X')->with('siswa')->get(),
+                    'bulan' => $bulan
+                ]);
+                break;
+            case 'XI':
+                return view('components.content.absen.index', [
+                    'data' => Kelas::where('nomor_kelas', 'XI')->with('siswa')->get(),
+                    'bulan' => $bulan
+                ]);
+                break;
+            case 'XII':
+                return view('components.content.absen.index', [
+                    'data' => Kelas::where('nomor_kelas', 'XII')->with('siswa')->get(),
+                    'bulan' => $bulan
+                ]);
+                break;
+            default:
+                return $kelas;
+                break;
+        }
     }
 
     /**
@@ -24,8 +49,11 @@ class AbsenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($siswa_id)
     {
+        return view('components.content.absen.create', [
+            "siswa" => Siswa::where("id", $siswa_id)->first()
+        ]);
     }
 
     /**
@@ -36,7 +64,13 @@ class AbsenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = Siswa::where('id', $request->siswa_id)->first();
+        Absen::create($request->all());
+        $siswa->izin = $request->keterangan == "izin" ? $siswa->izin + 1 : $siswa->izin;
+        $siswa->alpha = $request->keterangan == "alpha" ? $siswa->alpha + 1 : $siswa->alpha;
+        $siswa->sakit = $request->keterangan == "sakit" ? $siswa->sakit + 1 : $siswa->sakit;
+        $siswa->update();
+        return redirect("/absen/detail/$siswa->id");
     }
 
     /**
@@ -45,9 +79,12 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function show(Absen $absen)
+    public function show($siswa_id)
     {
-        //
+        return view("components.content.absen.detail", [
+            "siswa" => Siswa::where("id", $siswa_id)->with("absen")->first(),
+            'absen' => Absen::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
+        ]);
     }
 
     /**
@@ -79,36 +116,12 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Absen $absen)
+    public function destroy($absen_id)
     {
-        //
-    }
-
-    // x (sepuluh)
-    public function sepuluh()
-    {
-        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
-        return view('components.content.absen.x', [
-            'kelas' => Kelas::where('nomor_kelas', 'X')->with('siswa')->get(),
-            'bulan' => $bulan
-        ]);
-    }
-    // xi (sebelas)
-    public function sebelas()
-    {
-        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
-        return view('components.content.absen.xi', [
-            'kelas' => Kelas::where('nomor_kelas', 'XI')->with('siswa')->get(),
-            'bulan' => $bulan
-        ]);
-    }
-    // xii (duabelas)
-    public function duabelas()
-    {
-        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
-        return view('components.content.absen.xii', [
-            'kelas' => Kelas::where('nomor_kelas', 'XII')->with('siswa')->get(),
-            'bulan' => $bulan
-        ]);
+        $absen = Absen::with(['siswa'])->where('id', $absen_id)->first();
+        $siswa = Siswa::where('id', $absen->siswa->id)->first();
+        $siswa = $siswa->izin + $siswa->sakit + $siswa->alpha;
+        $siswa->delete();
+        return redirect('/absen/detail' . $siswa->id);
     }
 }

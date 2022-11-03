@@ -2,6 +2,9 @@
 @section('title')
     Dashboard
 @endsection
+@section('titlepage')
+    Dashboard
+@endsection
 @section('dashboard', 'active')
 @section('content')
     <div class="card" style="width: 18rem;">

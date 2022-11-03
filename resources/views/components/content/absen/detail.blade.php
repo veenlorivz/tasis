@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('titlepage')
-    Detail Pelanggaran Siswa
+    Detail Absensi Siswa
 @endsection
 @section('title')
-    Detail Pelanggaran
+    Detail Absensi
 @endsection
 @section('content')
     <div class="card py-3 px-4">
@@ -11,12 +11,6 @@
             <label for="nama" class="col-sm-2 col-form-label">Nama Siswa</label>
             <div class="col-sm-10">
                 <input type="text" disabled class="form-control" id="nama" value="{{ $siswa->nama }}">
-            </div>
-        </div>
-        <div class="mb-3 row align-items-center">
-            <label for="poin" class="col-sm-2 col-form-label">Sisa Poin</label>
-            <div class="col-sm-10">
-                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
             </div>
         </div>
         <div class="mb-3 row align-items-center">
@@ -33,18 +27,15 @@
             </div>
         </div>
     </div>
-
     <div class="card">
         <ol class="list-group list-group-numbered">
-            @foreach ($pelanggaran as $p)
+            @foreach ($absen as $abs)
                 <li class="list-group-item d-flex justify-content-between align-items-start" style="margin-bottom: 1px">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">{{ date('j F Y', strtotime($p->tanggal)) }}</div>
-                        Keterangan : {{ $p->keterangan }} <br>
-                        Poin Yang Didapat : {{ $p->poin }}
+                        <div class="fw-bold">{{ date('j F Y', strtotime($abs->tanggal)) }}</div>
+                        Keterangan : {{ $abs->keterangan }}
                     </div>
-                    <form class="ml-auto align-self-center mr-3" action="/pelanggaran/delete/{{ $p->id }}"
-                        method="post">
+                    <form class="ml-auto align-self-center mr-3" action="/absen/delete/{{ $abs->id }}" method="post">
                         @csrf
                         <button class="btn btn-danger" type="submit">
                             <i class="bi bi-trash fa-lg text-white"></i>

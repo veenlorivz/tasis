@@ -77,10 +77,10 @@ class PelanggaranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($siswa_id)
-    {   
+    {
         return view("components.content.pelanggaran.detail", [
-           "siswa" => Siswa::where("id", $siswa_id)->with("pelanggaran")->first(),
-           'pelanggaran' => Pelanggaran::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
+            "siswa" => Siswa::where("id", $siswa_id)->with("pelanggaran")->first(),
+            'pelanggaran' => Pelanggaran::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
         ]);
     }
 
@@ -119,7 +119,7 @@ class PelanggaranController extends Controller
         $siswa->poin = $siswa->poin + $pelanggaran->poin;
         $siswa->update();
         $pelanggaran->delete();
-        
+
         return redirect("/pelanggaran/detail/" . $siswa->id);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AbsenController;
-use App\Http\Controllers\DashController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelanggaranController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     // Dashboard
-    Route::get('/', DashController::class . '@index')->name('dashboard');
+    Route::get('/', DashboardController::class . '@index')->name('dashboard');
     // Data Absensi
     Route::prefix('absen')->group(function () {
         Route::get('/{kelas}', AbsenController::class . '@index')->name('absen');

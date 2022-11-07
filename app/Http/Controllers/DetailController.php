@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absen;
 use App\Models\Detail;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\returnSelf;
@@ -19,17 +21,17 @@ class DetailController extends Controller
     {
         switch ($kelas) {
             case 'X':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'X')->with(['siswa'])->get(),
                 ]);
                 break;
             case 'XI':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'XI')->with(['siswa'])->get(),
                 ]);
                 break;
             case 'XII':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'XII')->with(['siswa'])->get(),
                 ]);
                 break;
@@ -66,9 +68,12 @@ class DetailController extends Controller
      * @param  \App\Models\Detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function show(Detail $detail)
+    public function show($siswa_id)
     {
-        //
+        return view('components.content.siswa.detail', [
+            'siswa' => Siswa::where('id', $siswa_id)->with(['siswa'])->first(),
+            'absen' => Absen::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
+        ]);
     }
 
     /**

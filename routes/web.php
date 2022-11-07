@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\User;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('guest')->group(function () {
+// login
+Route::get('/login', UserController::class . '@login')->name('login');
+Route::post('/loginPost', UserController::class . '@loginPost');
+Route::get('/logout', UserController::class . '@logout')->name('logout');
+
+Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
+    //  Data Siswa Detail
+    Route::prefix('detail')->group(function () {
+        Route::get('/{kelas}', DetailController::class . '@index')->name('detail');
+    });
     // Data Absensi
     Route::prefix('absen')->group(function () {
         Route::get('/{kelas}', AbsenController::class . '@index')->name('absen');

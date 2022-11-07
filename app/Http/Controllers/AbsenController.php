@@ -119,10 +119,17 @@ class AbsenController extends Controller
      */
     public function destroy($absen_id)
     {
-        $absen = Absen::with(['siswa'])->where('id', $absen_id)->first();
-        $siswa = Siswa::where('id', $absen->siswa->id)->first();
-        $siswa = $siswa->izin + $siswa->sakit + $siswa->alpha;
-        $siswa->delete();
-        return redirect('/absen/detail' . $siswa->id);
+        $absen = Absen::with(['siswa'])->where('keterangan', $absen_id)->first();
+        $siswa = Siswa::where("id", $absen->siswa->id)->get();
+        if($absen->keterangan === 'izin'){
+            $siswa->izin = $siswa->izin - 1;
+        }elseif ($absen->keterangan === "sakit") {
+            $siswa->sakit = $siswa->sakit - 1;
+        }elseif ($absen->keterangan === "alpha") {
+            $siswa->alpha = $siswa->alpha - 1;
+        }
+        $siswa->update();
+        $absen->delete();
+        return redirect('/absen/detail/' . $siswa->id);
     }
 }

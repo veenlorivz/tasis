@@ -33,7 +33,6 @@
             </div>
         </div>
     </div>
-
     <div class="card">
         <ol class="list-group list-group-numbered">
             @foreach ($pelanggaran as $p)

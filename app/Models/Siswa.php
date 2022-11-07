@@ -15,11 +15,18 @@ class Siswa extends Model
         return $this->belongsTo(Absen::class);
     }
 
-    public function pelanggaran(){
+    public function pelanggaran()
+    {
         return $this->hasMany(Pelanggaran::class);
     }
 
-    public function kelas(){
+    public function kelas()
+    {
         return $this->belongsTo(Kelas::class);
-    }   
+    }
+
+    public function detail()
+    {
+        return $this->belongsTo(Detail::class);
+    }
 }

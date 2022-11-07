@@ -26,6 +26,7 @@
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Nis</th>
                                     <th scope="col">Sisa Poin</th>
+                                    <th scope="col">Alert</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,23 @@
                                         <td>{{ $siswa->nama }}</td>
                                         <td>{{ $siswa->nis }}</td>
                                         <td>{{ $siswa->poin }}</td>
+                                        @if ($siswa->poin >= 150)
+                                            <td>
+                                                <div class="badge text-bg-primary">Aman</div>
+                                            </td>
+                                        @elseif ($siswa->poin >= 120)
+                                            <td>
+                                                <div class="badge text-bg-warning">Kurang Aman</div>
+                                            </td>
+                                        @elseif ($siswa->poin >= 80)
+                                            <td>
+                                                <div class="badge text-bg-secondary">Tidak Aman</div>
+                                            </td>
+                                        @elseif ($siswa->poin >= 50)
+                                            <td>
+                                                <div class="badge text-bg-danger">Bahaya</div>
+                                            </td>
+                                        @endif
                                         <td>
                                             <a href="/pelanggaran/add/{{ $siswa->id }}" class="text-decoration-none">
                                                 <i

@@ -5,7 +5,19 @@
 @section('title')
     Data Absensi
 @endsection
-@section('content')
+@section('content') 
+    @php
+        function getKeterangan($data_absen ,$siswa_id, $month, $ket){
+            $filteredKet = array_filter($data_absen, function($var) use($siswa_id, $ket, $month) {
+                return $var['siswa']['id'] == $siswa_id 
+                && date('F', strtotime($var['tanggal'])) === $month
+                && $var['keterangan'] === $ket;
+            });
+            
+            return count($filteredKet);
+        }
+
+    @endphp
     @foreach ($bulan as $b)
         <div class="mb-4">
             <h3 class="ms-2 mb-3 mt-5">{{ $b }}</h3>
@@ -43,10 +55,14 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $siswa->nama }}</td>
                                             <td>{{ $siswa->nis }}</td>
-                                            <td>{{ $siswa->izin }}</td>
-                                            <td>{{ $siswa->sakit }}</td>
-                                            <td>{{ $siswa->alpha }}</td>
-                                            <td>{{ $siswa->izin + $siswa->sakit + $siswa->alpha }}</td>
+                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'izin')}}  </td>
+                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit')}}  </td>
+                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha')}}  </td>
+                                            <td>
+                                                {{ getKeterangan($absen->toArray(), $siswa->id, $b, 'izin') 
+                                                + getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit') 
+                                                + getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha') }}
+                                            </td>
                                             <td>
                                                 <a href="/absen/add/{{ $siswa->id }}" class="text-decoration-none">
                                                     <i
@@ -67,4 +83,14 @@
             </div>
         @endforeach
     @endforeach
+    <script >
+        const td = document.querySelectorAll("td")
+        console.log(td)
+        console.log(td[2].classList.value)
+        const getKeterangan = async (id, keterangan, bulan) =>{
+            const response = await fetch(`http://localhost:8000/api/absen/keterangan/${id}/${keterangan}/${bulan}`)
+            const data = await response.json()
+            return data
+        }
+    </script>
 @endsection

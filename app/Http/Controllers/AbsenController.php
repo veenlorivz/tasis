@@ -18,11 +18,12 @@ class AbsenController extends Controller
      */
     public function index($kelas)
     {
-        $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember', 'January', 'February', 'Maret', 'April', 'Mei', 'Juni'];
+        $bulan = ['July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June'];
         switch ($kelas) {
             case 'X':
                 return view('components.content.absen.index', [
                     'data' => Kelas::where('nomor_kelas', 'X')->with('siswa')->get(),
+                    'absen' => Absen::with('siswa')->get(),
                     'bulan' => $bulan
                 ]);
                 break;
@@ -123,5 +124,10 @@ class AbsenController extends Controller
         $siswa = $siswa->izin + $siswa->sakit + $siswa->alpha;
         $siswa->delete();
         return redirect('/absen/detail' . $siswa->id);
+    }
+
+    public function getKeterangan($siswa_id, $keterangan, $bulan){
+        // return Absen::where("siswa_id", $siswa_id)->where("keterangan", $keterangan)->get();
+        return Absen::where("siswa_id", $siswa_id)->where("keterangan", $keterangan)->whereRaw('MONTHNAME(tanggal) = ?', $bulan)->get();
     }
 }

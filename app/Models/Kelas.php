@@ -9,7 +9,13 @@ class Kelas extends Model
 {
     use HasFactory;
 
-    public function siswa(){
+    public function siswa()
+    {
         return $this->hasMany(Siswa::class);
+    }
+
+    public function detail()
+    {
+        return $this->belongsTo(Detail::class);
     }
 }

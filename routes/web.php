@@ -4,7 +4,6 @@ use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\PelanggaranController;
-use App\Http\Controllers\User;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +29,7 @@ Route::middleware('auth')->group(function () {
     //  Data Siswa Detail
     Route::prefix('detail')->group(function () {
         Route::get('/{kelas}', DetailController::class . '@index')->name('detail');
+        Route::get('/details/{siswa_id}', DetailController::class . '@show')->name('details');
     });
     // Data Absensi
     Route::prefix('absen')->group(function () {

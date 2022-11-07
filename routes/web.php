@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     //  Data Siswa Detail
     Route::prefix('detail')->group(function () {
         Route::get('/{kelas}', DetailController::class . '@index')->name('detail');
+        Route::get('/details/{siswa_id}', DetailController::class . '@show')->name('details');
     });
     // Data Absensi
     Route::prefix('absen')->group(function () {

@@ -29,6 +29,7 @@
                                     <th scope="col">Izin</th>
                                     <th scope="col">Sakit</th>
                                     <th scope="col">Alpha</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -41,6 +42,12 @@
                                         <td>{{ $siswa->izin }}</td>
                                         <td>{{ $siswa->sakit }}</td>
                                         <td>{{ $siswa->alpha }}</td>
+                                        <td>
+                                            <a href="/detail/details/{{ $siswa->id }}" class="text-decoration-none">
+                                                <i
+                                                    class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

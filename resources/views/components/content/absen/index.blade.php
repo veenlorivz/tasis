@@ -83,14 +83,4 @@
             </div>
         @endforeach
     @endforeach
-    <script >
-        const td = document.querySelectorAll("td")
-        console.log(td)
-        console.log(td[2].classList.value)
-        const getKeterangan = async (id, keterangan, bulan) =>{
-            const response = await fetch(`http://localhost:8000/api/absen/keterangan/${id}/${keterangan}/${bulan}`)
-            const data = await response.json()
-            return data
-        }
-    </script>
 @endsection

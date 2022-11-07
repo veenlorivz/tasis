@@ -125,9 +125,4 @@ class AbsenController extends Controller
         $siswa->delete();
         return redirect('/absen/detail' . $siswa->id);
     }
-
-    public function getKeterangan($siswa_id, $keterangan, $bulan){
-        // return Absen::where("siswa_id", $siswa_id)->where("keterangan", $keterangan)->get();
-        return Absen::where("siswa_id", $siswa_id)->where("keterangan", $keterangan)->whereRaw('MONTHNAME(tanggal) = ?', $bulan)->get();
-    }
 }

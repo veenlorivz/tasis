@@ -119,8 +119,8 @@ class AbsenController extends Controller
      */
     public function destroy($absen_id)
     {
-        $absen = Absen::with(['siswa'])->where('keterangan', $absen_id)->first();
-        $siswa = Siswa::where("id", $absen->siswa->id)->get();
+        $absen = Absen::with(['siswa'])->where('id', $absen_id)->first();
+        $siswa = Siswa::where("id", $absen->siswa->id)->first();
         if($absen->keterangan === 'izin'){
             $siswa->izin = $siswa->izin - 1;
         }elseif ($absen->keterangan === "sakit") {

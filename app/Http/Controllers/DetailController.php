@@ -21,17 +21,17 @@ class DetailController extends Controller
     {
         switch ($kelas) {
             case 'X':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'X')->with(['siswa'])->get(),
                 ]);
                 break;
             case 'XI':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'XI')->with(['siswa'])->get(),
                 ]);
                 break;
             case 'XII':
-                return view('components.content.detail.index', [
+                return view('components.content.siswa.index', [
                     'data' => Kelas::where('nomor_kelas', 'XII')->with(['siswa'])->get(),
                 ]);
                 break;
@@ -70,7 +70,7 @@ class DetailController extends Controller
      */
     public function show($siswa_id)
     {
-        return view('components.content.detail.detail', [
+        return view('components.content.siswa.detail', [
             'siswa' => Siswa::where('id', $siswa_id)->with(['siswa'])->first(),
             'absen' => Absen::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
         ]);

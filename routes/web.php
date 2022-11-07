@@ -4,7 +4,6 @@ use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\PelanggaranController;
-use App\Http\Controllers\User;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 

@@ -41,6 +41,9 @@
             </div>
         </div>
     </div>
+    <div style="margin-top:-15px;">
+        <a href="/siswa/detail/{{ $siswa->id }}" class="text-decoration-none btn btn-primary">Tambah</a>
+    </div>
     <div class="card">
         <ol class="list-group list-group-numbered">
             @foreach ($pelanggaran as $p)

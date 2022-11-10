@@ -6,7 +6,7 @@
     Detail Pelanggaran
 @endsection
 @section('content')
-    <div class="card py-3 px-4">
+    <div class="card pt-3 px-4">
         <div class="mb-3 row align-items-center">
             <label for="nama" class="col-sm-2 col-form-label">Nama Siswa</label>
             <div class="col-sm-10">
@@ -32,6 +32,9 @@
                     value="{{ $siswa->kelas->nomor_kelas }} {{ $siswa->kelas->nama_jurusan }}">
             </div>
         </div>
+    </div>
+    <div style="margin-top:-15px;">
+        <a href="/pelanggaran/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
     </div>
     <div class="card">
         <ol class="list-group list-group-numbered">

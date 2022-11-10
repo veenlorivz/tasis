@@ -27,9 +27,9 @@ Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
     //  Data Siswa Detail
-    Route::prefix('detail')->group(function () {
-        Route::get('/{kelas}', DetailController::class . '@index')->name('detail');
-        Route::get('/details/{siswa_id}', DetailController::class . '@show')->name('details');
+    Route::prefix('siswa')->group(function () {
+        Route::get('/{kelas}', DetailController::class . '@index')->name('siswa');
+        Route::get('/detail/{siswa_id}', DetailController::class . '@show')->name('detail');
     });
     // Data Absensi
     Route::prefix('absen')->group(function () {

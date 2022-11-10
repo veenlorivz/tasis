@@ -43,7 +43,7 @@
                                         <td>{{ $siswa->sakit }}</td>
                                         <td>{{ $siswa->alpha }}</td>
                                         <td>
-                                            <a href="/detail/details/{{ $siswa->id }}" class="text-decoration-none">
+                                            <a href="/siswa/detail/{{ $siswa->id }}" class="text-decoration-none">
                                                 <i
                                                     class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>
                                             </a>

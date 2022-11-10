@@ -26,7 +26,7 @@
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Nis</th>
                                     <th scope="col">Sisa Poin</th>
-                                    <th scope="col">Alert</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -37,28 +37,24 @@
                                         <td>{{ $siswa->nama }}</td>
                                         <td>{{ $siswa->nis }}</td>
                                         <td>{{ $siswa->poin }}</td>
-                                        @if ($siswa->poin >= 150)
+                                        @if ($siswa->poin <= 150 && $siswa->poin > 120)
                                             <td>
-                                                <div class="badge text-bg-primary">Aman</div>
+                                                <div class="badge text-bg-success">Aman</div>
                                             </td>
-                                        @elseif ($siswa->poin >= 120)
+                                        @elseif ($siswa->poin <= 120 && $siswa->poin > 80)
                                             <td>
-                                                <div class="badge text-bg-warning">Kurang Aman</div>
+                                                <div class="badge text-bg-warning text-white">Kurang Aman</div>
                                             </td>
-                                        @elseif ($siswa->poin >= 80)
+                                        @elseif ($siswa->poin <= 80 && $siswa->poin > 50)
                                             <td>
                                                 <div class="badge text-bg-secondary">Tidak Aman</div>
                                             </td>
-                                        @elseif ($siswa->poin >= 50)
+                                        @elseif ($siswa->poin <= 50)
                                             <td>
                                                 <div class="badge text-bg-danger">Bahaya</div>
                                             </td>
                                         @endif
                                         <td>
-                                            <a href="/pelanggaran/add/{{ $siswa->id }}" class="text-decoration-none">
-                                                <i
-                                                    class="bi bi-plus-circle-fill text-info fa-2x mr-2 cursor-pointer text-decoration-none"></i>
-                                            </a>
                                             <a href="/pelanggaran/detail/{{ $siswa->id }}" class="text-decoration-none">
                                                 <i
                                                     class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>

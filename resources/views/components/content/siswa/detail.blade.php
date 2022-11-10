@@ -3,15 +3,7 @@
     Detail Siswa
 @endsection
 @section('title')
-    Detail Data Siswa
-@endsection
-@section('content')
-    @extends('layouts.main')
-@section('titlepage')
-    Detail Pelanggaran Siswa
-@endsection
-@section('title')
-    Detail Pelanggaran
+    Detail Siswa
 @endsection
 @section('content')
     <div class="card py-3 px-4">
@@ -19,12 +11,6 @@
             <label for="nama" class="col-sm-2 col-form-label">Nama Siswa</label>
             <div class="col-sm-10">
                 <input type="text" disabled class="form-control" id="nama" value="{{ $siswa->nama }}">
-            </div>
-        </div>
-        <div class="mb-3 row align-items-center">
-            <label for="poin" class="col-sm-2 col-form-label">Sisa Poin</label>
-            <div class="col-sm-10">
-                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
             </div>
         </div>
         <div class="mb-3 row align-items-center">
@@ -38,6 +24,41 @@
             <div class="col-sm-10">
                 <input type="text" disabled class="form-control" id="nama"
                     value="{{ $siswa->kelas->nomor_kelas }} {{ $siswa->kelas->nama_jurusan }}">
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Sisa Poin</label>
+            <div class="col-sm-10 col-md-2">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
+            </div>
+            <div class="col-md-2">
+                @if ($siswa->poin <= 150 && $siswa->poin > 120)
+                    <div class="btn px-4 text-bg-success" style="cursor: default;">Aman</div>
+                @elseif ($siswa->poin <= 120 && $siswa->poin > 80)
+                    <div class="btn px-4 text-bg-warning text-white" style="cursor: default;">Kurang Aman</div>
+                @elseif ($siswa->poin <= 80 && $siswa->poin > 50)
+                    <div class="btn px-4 text-bg-secondary" style="cursor: default;">Tidak Aman</div>
+                @elseif ($siswa->poin <= 50)
+                    <div class="btn px-4 text-bg-danger" style="cursor: default;">Bahaya</div>
+                @endif
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Izin</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->izin }}>
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Sakit</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->sakit }}>
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Alpha</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->alpha }}>
             </div>
         </div>
     </div>
@@ -61,6 +82,4 @@
             @endforeach
         </ol>
     </div>
-@endsection
-
 @endsection

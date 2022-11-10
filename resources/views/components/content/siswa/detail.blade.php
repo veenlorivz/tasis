@@ -32,7 +32,15 @@
                 <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
             </div>
             <div class="col-md-2">
-                <input type="text" disabled class="form-control" id="poin" value=>
+                @if ($siswa->poin <= 150 && $siswa->poin > 120)
+                    <div class="btn px-4 text-bg-success" style="cursor: default;">Aman</div>
+                @elseif ($siswa->poin <= 120 && $siswa->poin > 80)
+                    <div class="btn px-4 text-bg-warning text-white" style="cursor: default;">Kurang Aman</div>
+                @elseif ($siswa->poin <= 80 && $siswa->poin > 50)
+                    <div class="btn px-4 text-bg-secondary" style="cursor: default;">Tidak Aman</div>
+                @elseif ($siswa->poin <= 50)
+                    <div class="btn px-4 text-bg-danger" style="cursor: default;">Bahaya</div>
+                @endif
             </div>
         </div>
         <div class="mb-3 row align-items-center">

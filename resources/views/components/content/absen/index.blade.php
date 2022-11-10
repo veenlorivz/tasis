@@ -5,18 +5,17 @@
 @section('title')
     Data Absensi
 @endsection
-@section('content') 
+@section('content')
     @php
-        function getKeterangan($data_absen ,$siswa_id, $month, $ket){
-            $filteredKet = array_filter($data_absen, function($var) use($siswa_id, $ket, $month) {
-                return $var['siswa']['id'] == $siswa_id 
-                && date('F', strtotime($var['tanggal'])) === $month
-                && $var['keterangan'] === $ket;
+        function getKeterangan($data_absen, $siswa_id, $month, $ket)
+        {
+            $filteredKet = array_filter($data_absen, function ($var) use ($siswa_id, $ket, $month) {
+                return $var['siswa']['id'] == $siswa_id && date('F', strtotime($var['tanggal'])) === $month && $var['keterangan'] === $ket;
             });
-            
+        
             return count($filteredKet);
         }
-
+        
     @endphp
     @foreach ($bulan as $b)
         <div class="mb-4">
@@ -55,19 +54,15 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $siswa->nama }}</td>
                                             <td>{{ $siswa->nis }}</td>
-                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'izin')}}  </td>
-                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit')}}  </td>
-                                            <td>{{getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha')}}  </td>
+                                            <td>{{ getKeterangan($absen->toArray(), $siswa->id, $b, 'izin') }} </td>
+                                            <td>{{ getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit') }} </td>
+                                            <td>{{ getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha') }} </td>
                                             <td>
-                                                {{ getKeterangan($absen->toArray(), $siswa->id, $b, 'izin') 
-                                                + getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit') 
-                                                + getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha') }}
+                                                {{ getKeterangan($absen->toArray(), $siswa->id, $b, 'izin') +
+                                                    getKeterangan($absen->toArray(), $siswa->id, $b, 'sakit') +
+                                                    getKeterangan($absen->toArray(), $siswa->id, $b, 'alpha') }}
                                             </td>
                                             <td>
-                                                <a href="/absen/add/{{ $siswa->id }}" class="text-decoration-none">
-                                                    <i
-                                                        class="bi bi-plus-circle-fill text-info fa-2x mr-2 cursor-pointer text-decoration-none"></i>
-                                                </a>
                                                 <a href="/absen/detail/{{ $siswa->id }}" class="text-decoration-none">
                                                     <i
                                                         class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>

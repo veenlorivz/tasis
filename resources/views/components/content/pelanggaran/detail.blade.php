@@ -34,7 +34,7 @@
         </div>
     </div>
     <div style="margin-top:-15px;">
-        <a href="/pelanggaran/detail/{{ $siswa->id }}" class="text-decoration-none btn btn-primary">Tambah</a>
+        <a href="/pelanggaran/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
     </div>
     <div class="card">
         <ol class="list-group list-group-numbered">

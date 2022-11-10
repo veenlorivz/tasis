@@ -18,9 +18,9 @@
                         class="bi bi-bookmark-check"></i>
                     <span>Data Siswa</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="/detail/X">X</a></li>
-                    <li><a class="nav-link" href="/detail/XI">XI</a></li>
-                    <li><a class="nav-link" href="/detail/XII">XII</a></li>
+                    <li><a class="nav-link" href="/siswa/X">X</a></li>
+                    <li><a class="nav-link" href="/siswa/XI">XI</a></li>
+                    <li><a class="nav-link" href="/siswa/XII">XII</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">

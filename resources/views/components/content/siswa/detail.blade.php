@@ -3,15 +3,7 @@
     Detail Siswa
 @endsection
 @section('title')
-    Detail Data Siswa
-@endsection
-@section('content')
-    @extends('layouts.main')
-@section('titlepage')
-    Detail Pelanggaran Siswa
-@endsection
-@section('title')
-    Detail Pelanggaran
+    Detail Siswa
 @endsection
 @section('content')
     <div class="card py-3 px-4">
@@ -19,12 +11,6 @@
             <label for="nama" class="col-sm-2 col-form-label">Nama Siswa</label>
             <div class="col-sm-10">
                 <input type="text" disabled class="form-control" id="nama" value="{{ $siswa->nama }}">
-            </div>
-        </div>
-        <div class="mb-3 row align-items-center">
-            <label for="poin" class="col-sm-2 col-form-label">Sisa Poin</label>
-            <div class="col-sm-10">
-                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
             </div>
         </div>
         <div class="mb-3 row align-items-center">
@@ -40,9 +26,33 @@
                     value="{{ $siswa->kelas->nomor_kelas }} {{ $siswa->kelas->nama_jurusan }}">
             </div>
         </div>
-    </div>
-    <div style="margin-top:-15px;">
-        <a href="/siswa/detail/{{ $siswa->id }}" class="text-decoration-none btn btn-primary">Tambah</a>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Sisa Poin</label>
+            <div class="col-sm-10 col-md-2">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->poin }}>
+            </div>
+            <div class="col-md-2">
+                <input type="text" disabled class="form-control" id="poin" value=>
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Izin</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->izin }}>
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Sakit</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->sakit }}>
+            </div>
+        </div>
+        <div class="mb-3 row align-items-center">
+            <label for="poin" class="col-sm-2 col-form-label">Alpha</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="poin" value={{ $siswa->alpha }}>
+            </div>
+        </div>
     </div>
     <div class="card">
         <ol class="list-group list-group-numbered">
@@ -64,6 +74,4 @@
             @endforeach
         </ol>
     </div>
-@endsection
-
 @endsection

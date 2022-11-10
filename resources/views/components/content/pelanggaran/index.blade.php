@@ -26,7 +26,7 @@
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Nis</th>
                                     <th scope="col">Sisa Poin</th>
-                                    <th scope="col">Alert</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -55,10 +55,6 @@
                                             </td>
                                         @endif
                                         <td>
-                                            <a href="/pelanggaran/add/{{ $siswa->id }}" class="text-decoration-none">
-                                                <i
-                                                    class="bi bi-plus-circle-fill text-info fa-2x mr-2 cursor-pointer text-decoration-none"></i>
-                                            </a>
                                             <a href="/pelanggaran/detail/{{ $siswa->id }}" class="text-decoration-none">
                                                 <i
                                                     class="bi bi-arrow-right-circle-fill text-info fa-2x cursor-pointer "></i>

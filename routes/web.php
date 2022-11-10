@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
     //  Data Siswa Detail
     Route::prefix('siswa')->group(function () {
-        Route::get('/{kelas}', DetailController::class . '@index')->name('detail');
+        Route::get('/{kelas}', DetailController::class . '@index')->name('siswa');
         Route::get('/detail/{siswa_id}', DetailController::class . '@show')->name('detail');
     });
     // Data Absensi

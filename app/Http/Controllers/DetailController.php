@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Absen;
 use App\Models\Detail;
 use App\Models\Kelas;
+use App\Models\Pelanggaran;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -70,9 +71,10 @@ class DetailController extends Controller
      */
     public function show($siswa_id)
     {
-        return view('components.content.siswa.detail', [
-            'siswa' => Siswa::where('id', $siswa_id)->with(['siswa'])->first(),
-            'absen' => Absen::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
+        return view("components.content.siswa.detail", [
+            "siswa" => Siswa::where("id", $siswa_id)->with(["absen", "pelanggaran"])->first(),
+            'absen' => Absen::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get(),
+            'pelanggaran' => Pelanggaran::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
         ]);
     }
 

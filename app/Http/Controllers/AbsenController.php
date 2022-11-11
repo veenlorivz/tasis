@@ -7,8 +7,6 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\returnSelf;
-
 class AbsenController extends Controller
 {
     /**
@@ -117,6 +115,7 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($absen_id)
     {
         $absen = Absen::with(['siswa'])->where('id', $absen_id)->first();

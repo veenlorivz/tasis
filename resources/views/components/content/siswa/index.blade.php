@@ -1,11 +1,11 @@
 @extends('layouts.main')
 @section('titlepage')
-    Detail Data Siswa
+    Data Siswa
 @endsection
 @section('title')
-    Data Siswa Detail
+    Data Siswa 
 @endsection
-@section('content')
+@section('content')    
     @foreach ($data as $d)
         <div class="accordion shadow-sm rounded-lg" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">

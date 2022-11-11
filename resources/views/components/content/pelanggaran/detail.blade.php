@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div style="margin-top:-15px;">
+    <div class="my-3">
         <a href="/pelanggaran/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
     </div>
     <div class="card">

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DetailController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
     //  Data Siswa Detail
     Route::prefix('siswa')->group(function () {
-        Route::get('/{kelas}', DetailController::class . '@index')->name('siswa');
-        Route::get('/detail/{siswa_id}', DetailController::class . '@show')->name('detail');
+        Route::get('/{kelas}', SiswaController::class . '@index')->name('siswa');
+        Route::get('/detail/{siswa_id}', SiswaController::class . '@show')->name('detail');
     });
     // Data Absensi
     Route::prefix('absen')->group(function () {

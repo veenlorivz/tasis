@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('absens', function (Blueprint $table) {
+        Schema::create('details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger("siswa_id");
-            $table->date("tanggal");
-            $table->enum("keterangan", ['izin', 'sakit', 'alpha']);
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absens');
+        Schema::dropIfExists('details');
     }
 };

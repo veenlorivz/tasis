@@ -18,16 +18,19 @@ class PelanggaranSeeder extends Seeder
             [
                 "siswa_id" => 1,
                 "poin" => 10,
+                "tanggal" => date("Y-m-d"),
                 "keterangan" => "Tidak Memakasi Dasi"
             ],
             [
                 "siswa_id" => 2,
                 "poin" => 7,
+                "tanggal" => date("Y-m-d"),
                 "keterangan" => "Terlambat"
             ],
             [
                 "siswa_id" => 3,
                 "poin" => 10,
+                "tanggal" => date("Y-m-d"),
                 "keterangan" => "Tidak Memakasi Baju"
             ],
         ];

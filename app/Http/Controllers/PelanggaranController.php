@@ -19,18 +19,18 @@ class PelanggaranController extends Controller
     {
         switch ($kelas) {
             case 'X':
-                return view('components.content.pelanggaran.x', [
-                    "data" => Kelas::with(['siswa'])->get()
+                return view('components.content.pelanggaran.index', [
+                    "data" => Kelas::where("nomor_kelas", "X")->with(['siswa'])->get()
                 ]);
                 break;
             case 'XI':
-                return view('components.content.pelanggaran.xi', [
-                    "data" => Kelas::with(['siswa'])->get()
+                return view('components.content.pelanggaran.index', [
+                    "data" => Kelas::where("nomor_kelas", "XI")->with(['siswa'])->get()
                 ]);
                 break;
             case 'XII':
-                return view('components.content.pelanggaran.xii', [
-                    "data" => Kelas::with(['siswa'])->get()
+                return view('components.content.pelanggaran.index', [
+                    "data" => Kelas::where("nomor_kelas", "XII")->with(['siswa'])->get()
                 ]);
                 break;
             default:
@@ -44,9 +44,11 @@ class PelanggaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($siswa_id)
     {
-
+        return view('components.content.pelanggaran.create', [
+            "siswa" => Siswa::where("id", $siswa_id)->first()
+        ]);
     }
 
     /**
@@ -57,18 +59,29 @@ class PelanggaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = Siswa::where("id", $request->siswa_id)->first();
+        $siswa->poin = $siswa->poin - $request->poin;
+        $siswa->update();
+        Pelanggaran::create([
+            "siswa_id" => $request->siswa_id,
+            "poin" => $request->poin,
+            "tanggal" => $request->tanggal,
+            "keterangan" => $request->keterangan
+        ]);
+        return redirect("/pelanggaran/detail/$siswa->id");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pelanggaran  $pelanggaran
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelanggaran $pelanggaran)
+    public function show($siswa_id)
     {
-        //
+        return view("components.content.pelanggaran.detail", [
+            "siswa" => Siswa::where("id", $siswa_id)->with("pelanggaran")->first(),
+            'pelanggaran' => Pelanggaran::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
+        ]);
     }
 
     /**
@@ -96,27 +109,17 @@ class PelanggaranController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pelanggaran  $pelanggaran
+     *     
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pelanggaran $pelanggaran)
+    public function destroy($pelanggaran_id)
     {
-        //
-    }
-    // x (sepuluh)
-    public function sepuluh()
-    {
-        
-    }
-    // xi (sebelas)
-    public function sebelas()
-    {
-        return view('components.content.pelanggaran.xi');
-    }
-    // xii (duabelas)
-    public function duabelas()
-    {
-        return view('components.content.pelanggaran.xii');
+        $pelanggaran =  Pelanggaran::with(["siswa"])->where("id", $pelanggaran_id)->first();
+        $siswa = Siswa::where("id", $pelanggaran->siswa->id)->first();
+        $siswa->poin = $siswa->poin + $pelanggaran->poin;
+        $siswa->update();
+        $pelanggaran->delete();
+
+        return redirect("/pelanggaran/detail/" . $siswa->id);
     }
 }

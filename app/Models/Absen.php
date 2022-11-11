@@ -13,4 +13,9 @@ class Absen extends Model
     {
         return $this->belongsTo(Siswa::class);
     }
+
+    public function detail()
+    {
+        return $this->belongsTo(Detail::class);
+    }
 }

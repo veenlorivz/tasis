@@ -26,6 +26,9 @@ Route::get('/logout', UserController::class . '@logout')->name('logout');
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
+    // Register
+    Route::get('/register', UserController::class . '@register')->name('register');
+    Route::post('/regisPost', UserController::class . '@regisPost')->name('regisPost');
     //  Data Siswa Detail
     Route::prefix('siswa')->group(function () {
         Route::get('/{kelas}', SiswaController::class . '@index')->name('siswa');

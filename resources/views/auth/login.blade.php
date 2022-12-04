@@ -16,13 +16,6 @@
                             aria-label="Close"></button>
                     </div>
                 @endif
-                @if (\Session::has('alert-success'))
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <div>{{ Session::get('alert-success') }}</div>
-                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert"
-                            aria-label="Close"></button>
-                    </div>
-                @endif
                 <form action="{{ url('/loginPost') }}" method="post">
                     {{ csrf_field() }}
                     <div class="mb-3">

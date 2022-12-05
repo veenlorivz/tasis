@@ -27,12 +27,13 @@
         </div>
         <div class="mb-3">
             <label for="keterangan" class="form-label">Keterangan</label>
-            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan"
-                value="{{ $pelanggaran->keterangan }}" required>
+            <input type="text" class="form-control" name="keterangan" id="keterangan"
+                value="{{ $pelanggaran->keterangan }}">
         </div>
         <div class="mt-2">
-            <a href="/pelanggaran/detail/{{ $pelanggaran->id }}" class="btn btn-dark mr-2">&laquo; Kembali</a>
-            <button type="submit" class="btn btn-primary" style="max-width: 100px">Submit</button>
+            <a href="/pelanggaran/detail/{{ $pelanggaran->siswa->id }}" class="btn btn-dark mr-2">&laquo; Kembali</a>
+            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan"
+                value="{{ $pelanggaran->keterangan }}" required>
         </div>
     </form>
 @endsection

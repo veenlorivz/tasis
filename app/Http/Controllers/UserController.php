@@ -40,6 +40,11 @@ class UserController extends Controller
 
     public function regisPost(Request $req)
     {
+
+        $this->validate($req, [
+            'name' => 'required|min:5',
+            'password' => 'required|min:5',
+        ]);
         $user = new User;
         $user->name = $req->name;
         $user->password = Hash::make($req->password);

@@ -14,8 +14,7 @@
             </li>
             <li class="menu-header">Data Siswa</li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="bi bi-bookmark-check"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="bi bi-person"></i>
                     <span>Data Siswa</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="/siswa/X">X</a></li>

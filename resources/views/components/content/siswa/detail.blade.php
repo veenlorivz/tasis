@@ -62,6 +62,9 @@
             </div>
         </div>
     </div>
+    <div class="mb-3">
+        <a href="/siswa/{{ $siswa->kelas->nomor_kelas }}" class="btn btn-dark mt-2 text-decoration-none px-3">&laquo; Kembali</a>
+    </div>
     <div class="card">
         <ol class="list-group list-group-numbered">
             @foreach ($pelanggaran as $p)

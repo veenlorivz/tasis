@@ -104,7 +104,7 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Absen $absen)
+    public function update($id_pelanggaran, Request $request    )
     {
         //
     }

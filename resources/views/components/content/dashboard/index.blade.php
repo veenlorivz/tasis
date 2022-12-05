@@ -50,6 +50,7 @@
             <tr>
                 <th rowspan="2" scope="col">No</th>
                 <th rowspan="2" scope="col">Nama Siswa</th>
+                <th rowspan="2" scope="col">Kelas</th>
                 <th rowspan="2" scope="col">Nis</th>
                 <th rowspan="2" scope="col">Poin</th>
                 <th rowspan="2" scope="col">Status</th>
@@ -61,6 +62,7 @@
                         <tr class="bg-white">
                             <td rowspan="2" scope="col">{{ $loop->iteration }}</td>
                             <td rowspan="2" scope="col">{{ $s->nama }}</td>
+                            <td rowspan="2" scope="col">{{ $s->kelas->nomor_kelas }}</td>
                             <td rowspan="2" scope="col">{{ $s->nis }}</td>
                             <td rowspan="2" scope="col">{{ $s->poin }}</td>
                             @if ($s->poin <= 150 && $s->poin > 120)

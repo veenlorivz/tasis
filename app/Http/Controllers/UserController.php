@@ -16,9 +16,9 @@ class UserController extends Controller
         return view('auth.login');
     }
 
-    public function register()
+    public function notfound()
     {
-        return view('auth.register');
+        return view('auth.page404');
     }
 
     public function loginPost(Request $req)
@@ -38,19 +38,6 @@ class UserController extends Controller
     }
 
 
-    public function regisPost(Request $req)
-    {
-
-        $this->validate($req, [
-            'name' => 'required|min:5',
-            'password' => 'required|min:5',
-        ]);
-        $user = new User;
-        $user->name = $req->name;
-        $user->password = Hash::make($req->password);
-        $user->save();
-        return redirect('/');
-    }
 
     public function logout()
     {

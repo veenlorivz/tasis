@@ -28,12 +28,14 @@ class AbsenController extends Controller
             case 'XI':
                 return view('components.content.absen.index', [
                     'data' => Kelas::where('nomor_kelas', 'XI')->with('siswa')->get(),
+                    'absen' => Absen::with('siswa')->get(),
                     'bulan' => $bulan
                 ]);
                 break;
             case 'XII':
                 return view('components.content.absen.index', [
                     'data' => Kelas::where('nomor_kelas', 'XII')->with('siswa')->get(),
+                    'absen' => Absen::with('siswa')->get(),
                     'bulan' => $bulan
                 ]);
                 break;
@@ -104,7 +106,7 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function update($id_pelanggaran, Request $request    )
+    public function update($id_pelanggaran, Request $request)
     {
         //
     }
@@ -120,11 +122,11 @@ class AbsenController extends Controller
     {
         $absen = Absen::with(['siswa'])->where('id', $absen_id)->first();
         $siswa = Siswa::where("id", $absen->siswa->id)->first();
-        if($absen->keterangan === 'izin'){
+        if ($absen->keterangan === 'izin') {
             $siswa->izin = $siswa->izin - 1;
-        }elseif ($absen->keterangan === "sakit") {
+        } elseif ($absen->keterangan === "sakit") {
             $siswa->sakit = $siswa->sakit - 1;
-        }elseif ($absen->keterangan === "alpha") {
+        } elseif ($absen->keterangan === "alpha") {
             $siswa->alpha = $siswa->alpha - 1;
         }
         $siswa->update();

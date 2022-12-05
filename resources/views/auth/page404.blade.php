@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="mx-auto d-flex justify-content-center align-items-center flex-column">
-        <img class="w-25" src="assets/img/oops.png" alt="404">
+        <img class="w-25 mt-5" src="assets/img/404.png" alt="404">
         <div class="mt-3 text-capitalize">
             <p class="fs-3 fw-semibold " style="letter-spacing: 1px; color:rgba(156, 13, 13, 0.788);">Oops. You do not have
                 access to

@@ -34,7 +34,8 @@
         </div>
     </div>
     <div class="my-3">
-        <a href="/pelanggaran/{{ $siswa->kelas->nomor_kelas }}" class="btn btn-dark mt-2 text-decoration-none px-3">&laquo; Kembali</a>
+        <a href="/pelanggaran/{{ $siswa->kelas->nomor_kelas }}" class="btn btn-dark mt-2 text-decoration-none px-3">&laquo;
+            Kembali</a>
         <a href="/pelanggaran/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
     </div>
     <div class="card">
@@ -43,7 +44,7 @@
                 <li class="list-group-item d-flex align-items-start" style="margin-bottom: 1px">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">{{ date('j F Y', strtotime($p->tanggal)) }}</div>
-                        Keterangan : {{ $p->keterangan }} <br>
+                        Keterangan : <span class="text-capitalize">{{ $p->keterangan }}</span> <br>
                         Poin Yang Didapat : {{ $p->poin }}
                     </div>
                     <form class="ml-auto align-self-center mr-3" action="/pelanggaran/edit/{{ $p->id }}"
@@ -52,8 +53,7 @@
                             <i class="bi bi-pencil-fill fa-lg text-white"></i>
                         </button>
                     </form>
-                    <form class="align-self-center mr-3" action="/pelanggaran/delete/{{ $p->id }}"
-                        method="post">
+                    <form class="align-self-center mr-3" action="/pelanggaran/delete/{{ $p->id }}" method="post">
                         @csrf
                         <button class="btn btn-danger" type="submit">
                             <i class="bi bi-trash fa-lg text-white"></i>

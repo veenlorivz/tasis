@@ -79,7 +79,7 @@ class PelanggaranController extends Controller
     public function show($siswa_id)
     {
         return view("components.content.pelanggaran.detail", [
-            "siswa" => Siswa::where("id", $siswa_id)->with("pelanggaran")->first(),
+            "siswa" => Siswa::where("id", $siswa_id)->with(["pelanggaran","kelas"])->first(),
             'pelanggaran' => Pelanggaran::where("siswa_id", $siswa_id)->orderBy("tanggal", 'desc')->get()
         ]);
     }
@@ -90,9 +90,11 @@ class PelanggaranController extends Controller
      * @param  \App\Models\Pelanggaran  $pelanggaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggaran $pelanggaran)
+    public function edit($pelanggaran_id)
     {
-        //
+        return view('components.content.pelanggaran.update', [
+            "pelanggaran" => Pelanggaran::where("id", $pelanggaran_id)->with('siswa')->first(),
+        ]);
     }
 
     /**
@@ -102,9 +104,17 @@ class PelanggaranController extends Controller
      * @param  \App\Models\Pelanggaran  $pelanggaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggaran $pelanggaran)
+    public function update($id_pelanggaran, Request $request)
     {
-        //
+        $pelanggaran = Pelanggaran::where('id',$id_pelanggaran)->with('siswa')->first();
+        $siswa = Siswa::find($pelanggaran->siswa->id);
+        $siswa->poin = $siswa->poin + ($pelanggaran->poin - $request->poin);
+        $siswa->update();
+        $pelanggaran->poin = $request->poin;
+        $pelanggaran->tanggal = $request->tanggal;
+        $pelanggaran->keterangan = $request->keterangan;
+        $pelanggaran->update();
+        return redirect('/pelanggaran/detail/' . $pelanggaran->siswa->id);
     }
 
     /**

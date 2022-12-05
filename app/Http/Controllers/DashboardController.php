@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         return view('components.content.dashboard.index', [
-            "siswa" => Siswa::where("poin", "<=" , 120)->orderBy('poin', 'desc')->paginate(10),
+            "siswa" => Siswa::where("poin", "<=" , 120)->orderBy('poin', 'asc')->paginate(10),
             "total_siswa" => Siswa::all()->count(),
             "total_siswa_bermasalah" => Siswa::where("poin", "<=" , 120)->orderBy('poin', 'desc')->get()->count()
         ]);

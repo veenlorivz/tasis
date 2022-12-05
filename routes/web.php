@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/add/{siswa_id}', PelanggaranController::class . '@create')->name('create');
         Route::post('/store', PelanggaranController::class . '@store')->name('store');
         Route::get('/detail/{siswa_id}', PelanggaranController::class . '@show')->name('detail');
+        Route::get('/edit/{pelanggaran_id}', PelanggaranController::class . '@edit')->name('edit');
+        Route::put('/update/{pelanggaran_id}', PelanggaranController::class . '@update')->name('update');
         Route::post('/delete/{pelanggaran_id}', PelanggaranController::class . '@destroy')->name('destroy');
     });
 });

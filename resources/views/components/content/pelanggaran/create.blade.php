@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="keterangan" class="form-label">Keterangan</label>
-            <input type="text" class="form-control" name="keterangan" id="keterangan">
+            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan">
         </div>
         <button type="submit" class="btn btn-primary mt-2" style="max-width: 100px">Submit</button>
     </form>

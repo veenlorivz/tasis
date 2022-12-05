@@ -6,7 +6,7 @@
     Ubah Data Pelanggaran Siswa
 @endsection
 @section('content')
-    <form class="card py-3 px-4 rounded" method="POST" action="/pelanggaran/update/{{ $pelanggaran->siswa->id }}">
+    <form class="card py-3 px-4 rounded" method="POST" action="/pelanggaran/update/{{ $pelanggaran->id }}">
         @csrf
         @method('PUT')
         <input type="text" name="siswa_id" value="{{ $pelanggaran->siswa->id }}" hidden>
@@ -32,8 +32,7 @@
         </div>
         <div class="mt-2">
             <a href="/pelanggaran/detail/{{ $pelanggaran->siswa->id }}" class="btn btn-dark mr-2">&laquo; Kembali</a>
-            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan"
-                value="{{ $pelanggaran->keterangan }}" required>
+            <button type="submit" class="btn btn-primary" style="max-width: 100px">Submit</button>
         </div>
     </form>
 @endsection

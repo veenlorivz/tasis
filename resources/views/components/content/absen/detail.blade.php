@@ -28,8 +28,9 @@
         </div>
     </div>
     <div class="my-3">
-        <a href="/absen/{{ $siswa->kelas->nomor_kelas }}" class="btn btn-dark mt-2 text-decoration-none px-3">&laquo; Kembali</a>
-        <a href="/pelanggaran/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
+        <a href="/absen/{{ $siswa->kelas->nomor_kelas }}" class="btn btn-dark mt-2 text-decoration-none px-3">&laquo;
+            Kembali</a>
+        <a href="/absen/add/{{ $siswa->id }}" class="btn btn-primary mt-2 text-decoration-none px-3">Tambah</a>
     </div>
     <div class="card">
         <ol class="list-group list-group-numbered">

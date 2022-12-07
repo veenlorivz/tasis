@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" name="tanggal" id="tanggal">
+            <input type="date" class="form-control" name="tanggal" id="tanggal" required>
         </div>
         <div class="mb-3">
             <label for="keterangan" class="form-label">Keterangan</label>

@@ -15,15 +15,15 @@
         </div>
         <div class="mb-3">
             <label for="poin" class="form-label">Poin</label>
-            <input type="number" name="poin" class="form-control" id="poin">
+            <input type="number" name="poin" class="form-control" id="poin" required>
         </div>
         <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" id="tanggal">
+            <input type="date" name="tanggal" class="form-control" id="tanggal" required>
         </div>
         <div class="mb-3">
             <label for="keterangan" class="form-label">Keterangan</label>
-            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan">
+            <input type="text" class="form-control text-capitalize" name="keterangan" id="keterangan" required>
         </div>
         <button type="submit" class="btn btn-primary mt-2" style="max-width: 100px">Submit</button>
     </form>

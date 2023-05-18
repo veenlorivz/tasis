@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row mx-1 justify-content-center mt-5">
-            <div class="col-sm-4 shadow rounded-3 bg-white my-5 p-4">
+            <div class="col-12 col-sm-7 col-lg-4 mx-4 mx-md-0 shadow rounded-3 bg-white my-5 p-4">
                 <div class="text-center pt-5 pb-5">
                     <p class="fs-4">TASIS</p>
                 </div>

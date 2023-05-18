@@ -26,6 +26,7 @@ Route::get('/logout', UserController::class . '@logout')->name('logout');
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/', DashboardController::class . '@index')->name('dashboard');
+    Route::post('/excelimport', SiswaController::class . '@import')->name('user.import');
     //  Data Siswa Detail
     Route::prefix('siswa')->group(function () {
         Route::get('/{kelas}', SiswaController::class . '@index')->name('siswa');

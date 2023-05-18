@@ -48,6 +48,13 @@
         <div class="badge text-bg-danger">Bahaya</div>
     </div>
     <div class="card p-3">
+        <div class="mb-3 ">
+            <form action="{{ route('user.import') }}" class="d-flex" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="form-control outlined-none col-4" name="file">
+                <button type="submit" class="btn btn-success ms-2">Import Data Siswa</button>
+            </form>
+        </div>
 
         <div class="text-dark h4 mb-4">
             Siswa Dengan Poin Rendah

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\Siswaimport;
 use App\Models\Absen;
 use App\Models\Detail;
 use App\Models\Kelas;
 use App\Models\Pelanggaran;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -23,7 +25,7 @@ class SiswaController extends Controller
         switch ($kelas) {
             case 'X':
                 return view('components.content.siswa.index', [
-                    'data' => Kelas::where('nomor_kelas', 'X')->with(['siswa'])->get() 
+                    'data' => Kelas::where('nomor_kelas', 'X')->with(['siswa'])->get()
                 ]);
                 break;
             case 'XI':
@@ -110,5 +112,10 @@ class SiswaController extends Controller
     public function destroy(Detail $detail)
     {
         //
+    }
+    public function import(Request $request)
+    {
+        Excel::import(new Siswaimport, $request->file('file'));
+        return redirect()->route('dashboard')->with('success', 'Import data success');
     }
 }

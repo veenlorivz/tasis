@@ -14,4 +14,16 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
+    public function run()
+    {
+        $user = [
+            [
+                'name' => 'user',
+                'password' => Hash::make('12345')
+            ]
+        ];
+        foreach ($user as $user) {
+            User::create($user);
+        }
+    }
 }

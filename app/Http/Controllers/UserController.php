@@ -37,8 +37,6 @@ class UserController extends Controller
         return redirect('/login')->with('alert', 'Incorret Password or Email, Please Check Again!');
     }
 
-
-
     public function logout()
     {
         Session::flush();
